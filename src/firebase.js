@@ -16,6 +16,6 @@ const  firebaseConfig = {
   const auth=firebase.auth()
   const firestore=firebase.firestore()
 
-  
+
   export default firebase;
-  export {auth}
+  export {auth,firestore}

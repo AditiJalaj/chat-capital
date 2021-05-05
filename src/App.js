@@ -5,7 +5,8 @@ import {
   Switch,
   Route,
   Redirect,
-  useLocation
+  useLocation,
+  useHistory
 } from "react-router-dom";
 import Login from './components/Login';
 import RoomList from './components/RoomList';
@@ -17,6 +18,7 @@ import {useEffect } from 'react'
 
 function App() {
 
+  const history=useHistory()
   const [user,setUser]=useState('')
  
   const authListener=()=>{
@@ -36,14 +38,46 @@ function App() {
   },[])
 
   const handleLogOut=()=>{
-    firebase.auth().signOut();
+    auth.signOut()
   }
 
   return (
-    <div >
+    <div>
+    
+   {/* <div >
     {user ? (<ChatRoom  handleLogOut={handleLogOut} />):(<Login/>)}
+   </div>
+
+    <Router>
+    <div>
+   
+    <Switch>
+    <Route path='/login'> <Login/></Route>
+    <Route path='/roomlist'> <RoomList/></Route>
+    <Route path='/addroom'> <AddRoom/></Route>
+    <Route path='/chatroom/:room'> <ChatRoom/></Route>
+    </Switch>
+    </div>
+    </Router>
+     */}
+
+     <div className="App">
+     
+   <header>
+   <img src='../chat-capital-logo.jpg' className="chat-logo"></img>
+        <h1 class="chat-capital">Chat-Capital </h1>
+       
+        <button onClick={handleLogOut} className='sign-out'>SignOut</button>
+      </header>
+      
+      <section>
+        {user ? <ChatRoom /> : <Login />}
+      </section>
+
+    </div>
     </div>
   );
+
 }
 
 export default App;

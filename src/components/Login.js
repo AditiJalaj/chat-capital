@@ -1,14 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from "react-router-dom";
-import {
-    Jumbotron,
-    Spinner,
-    Form,
-    Button,
-    FormGroup, 
-    Label, 
-    Input
-} from 'reactstrap';
+
 
 import firebase from '../firebase';
 import { auth } from "../firebase";
@@ -23,8 +15,7 @@ const Login = () => {
     
  const handleLogin=(e)=>{
    e.preventDefault()
-   firebase.auth()
-   .signInWithEmailAndPassword(email,password)
+   auth.signInWithEmailAndPassword(email,password)
    .then((u)=>{
      console.log(u)
    })
@@ -36,7 +27,7 @@ const Login = () => {
 
 const handleSignUp=(e)=>{
 e.preventDefault()
-firebase.auth().createUserWithEmailAndPassword(email,password)
+auth.createUserWithEmailAndPassword(email,password)
 .then((u)=>{
   console.log(u)
   
@@ -51,7 +42,7 @@ firebase.auth().createUserWithEmailAndPassword(email,password)
         <div>
         <form id="signup-form">
 
-        <div className="input-field">
+        <div className="sign-in">
         <label htmlFor='signup-email'>Email address</label>
         <input
          type="email"
@@ -65,7 +56,7 @@ firebase.auth().createUserWithEmailAndPassword(email,password)
        
         
         <br></br>
-        <div className="input-field">
+        <div className="sign-in">
         <label htmlFor='signup-password'>Password</label>
         <input required type="password"
          id="signup-password" value={password}
