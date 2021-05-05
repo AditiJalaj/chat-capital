@@ -15,6 +15,7 @@ import ChatRoom from './components/ChatRoom';
 import firebase from './firebase';
 import { auth } from "./firebase";
 import {useEffect } from 'react'
+import chatlogo from './chat-logo.png'
 
 function App() {
 
@@ -64,7 +65,7 @@ function App() {
      <div className="App">
      
    <header>
-   <img src='../chat-capital-logo.jpg' className="chat-logo"></img>
+   <img src={chatlogo} className="chat-logo"></img>
         <h1 class="chat-capital">Chat-Capital </h1>
        
         <button onClick={handleLogOut} className='sign-out'>SignOut</button>
